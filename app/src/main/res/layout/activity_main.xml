@@ -11,19 +11,19 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="오늘 계획"
-        android:textColor="#F9E7E7"
+        android:text="오늘 뭐하지"
+        android:textColor="#E6B1EE"
         android:textSize="55dp"
         android:gravity="center"
         android:paddingTop="80dp"
-        android:fontFamily="@font/bold"/>vcvxvxv
+        android:fontFamily="@font/bold"/>
 
     <Button
        android:layout_marginTop="150dp"
         android:layout_below="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/group1"
+        android:background="@drawable/button"
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
         android:id="@+id/a"
@@ -31,7 +31,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/group2"
+        android:background="@drawable/button"
         android:layout_centerInParent="true"
         android:layout_below="@+id/a"
         />
