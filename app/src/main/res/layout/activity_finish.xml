@@ -7,4 +7,9 @@
     android:background="@drawable/back1"
     tools:context=".NewPlanActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycler"/>
+
 </RelativeLayout>
