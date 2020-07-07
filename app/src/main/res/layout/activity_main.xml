@@ -16,7 +16,7 @@
         android:textSize="55dp"
         android:gravity="center"
         android:paddingTop="80dp"
-        android:fontFamily="@font/bold"/>
+        android:fontFamily="@font/bold"/>vcvxvxv
 
     <Button
        android:layout_marginTop="150dp"
