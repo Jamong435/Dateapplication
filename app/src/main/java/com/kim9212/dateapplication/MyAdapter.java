@@ -1,6 +1,7 @@
 package com.kim9212.dateapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,11 @@ public class MyAdapter extends RecyclerView.Adapter {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Item item=items.get(getLayoutPosition());
+                    Intent intent= new Intent(context,NewPlanActivity.class);
+
+
+
 
                 }
             });

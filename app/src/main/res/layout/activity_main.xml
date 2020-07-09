@@ -16,7 +16,8 @@
         android:textSize="55dp"
         android:gravity="center"
         android:paddingTop="80dp"
-        android:fontFamily="@font/bold"/>
+        android:fontFamily="@font/bold"
+        android:onClick="startnewplan"/>
 
     <Button
        android:layout_marginTop="150dp"
@@ -27,6 +28,7 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
         android:id="@+id/a"
+        android:onClick="startsaveddata"
         />
     <Button
         android:layout_width="wrap_content"

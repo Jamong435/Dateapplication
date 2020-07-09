@@ -17,6 +17,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void clickBtn(View view) {
+
+
+    public void startnewplan(View view) {
+    }
+
+    public void startsaveddata(View view) {
     }
 }
