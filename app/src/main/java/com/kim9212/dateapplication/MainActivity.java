@@ -3,6 +3,7 @@ package com.kim9212.dateapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -53,8 +54,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startnewplan(View view) {
+        Intent intent= new Intent(this,NewPlanActivity.class);
+        startActivity(intent);
+
     }
 
     public void startsaveddata(View view) {
+        Intent intent= new Intent(this,ListActivity.class);
+        startActivity(intent);
     }
 }
