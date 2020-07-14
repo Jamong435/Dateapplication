@@ -17,7 +17,7 @@
         android:gravity="center"
         android:paddingTop="80dp"
         android:fontFamily="@font/bold"
-        android:onClick="startnewplan"/>
+       />
 
     <Button
        android:layout_marginTop="150dp"
@@ -40,6 +40,7 @@
         android:layout_below="@+id/a"
         android:textSize="30dp"
         android:text="plan list"
+        android:onClick="startnewplan"
 
         />
 
