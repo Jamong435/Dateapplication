@@ -3,6 +3,7 @@ package com.kim9212.dateapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -37,6 +38,14 @@ public class GoogleLogin extends AppCompatActivity {
     TextView tvName;
     TextView tvEmail;
     CircleImageView iv;
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,13 +54,10 @@ public class GoogleLogin extends AppCompatActivity {
         tvEmail= findViewById(R.id.tv_email);
         iv= findViewById(R.id.iv);
 
-        //키해시값 얻어와서 Logcat창에 출력
+
         String keyHash= getKeyHash(this);
         Log.i("TAG", keyHash);
 
-        //카카오로그인 버튼은 별도의 클릭이벤트 처리없이도 자동으로
-        //웹뷰를 실행하여 로그인 웹페이지를 보여줌.
-        //그 웹페이지의 로그인 응답결과를 받기 위한 세션(카카오와 연결하는 통로같은 개념)을 연결하기!!
         Session.getCurrentSession().addCallback(sessionCallback);
     }
 
@@ -74,34 +80,50 @@ public class GoogleLogin extends AppCompatActivity {
 
     //로그인 사용자정보 받기
     void requestUserInfo(){
-
         UserManagement.getInstance().me(new MeV2ResponseCallback() {
             @Override
             public void onSessionClosed(ErrorResult errorResult) {
 
             }
-
             @Override
             public void onSuccess(MeV2Response result) {
                 //사용자 계정 정보 객체
                 UserAccount userAccount = result.getKakaoAccount();
-                if(userAccount==null) return;
+                if(userAccount==null)
 
+                    return;
                 //1. 이메일 정보
                 tvEmail.setText( userAccount.getEmail() );
 
                 //2. 기본 프로필 정보(닉네임, 이미지, 섬네일 이미지)
                 Profile profile= userAccount.getProfile();
+
                 if(profile==null) return;
 
                 String nickName= profile.getNickname();
                 String imgUrl= profile.getProfileImageUrl();
-                String thumbnailImgUrl= profile.getThumbnailImageUrl();
-
                 tvName.setText(nickName);
-                Glide.with(GoogleLogin.this).load(imgUrl).into(iv);
+
+
+
+                //G에 저장하는 과정
+                G.nickName=nickName;
+                G.imgUrl=imgUrl;
+
+                //sharedpreference로 내부저장소에 닉네임과 사진저장
+                getSharedPreferences("name",MODE_PRIVATE).edit().putString("name",G.nickName).commit();
+                getSharedPreferences("name",MODE_PRIVATE).edit().putString("picture",G.imgUrl).commit();
+
+
+
+                Intent intent= new Intent(GoogleLogin.this,MainActivity.class);
+                startActivity(intent);
+
+
+
             }
         });
+
     }
 
 
@@ -137,7 +159,16 @@ public class GoogleLogin extends AppCompatActivity {
         UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
             @Override
             public void onCompleteLogout() {
-                Toast.makeText(GoogleLogin.this, "로그아웃 완료", Toast.LENGTH_SHORT).show();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(GoogleLogin.this, "로그아웃 완료", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+
+                Session.getCurrentSession().removeCallback(sessionCallback);
             }
         });
 

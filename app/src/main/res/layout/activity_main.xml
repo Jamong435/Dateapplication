@@ -7,6 +7,14 @@
     tools:context=".MainActivity"
     android:background="@drawable/back2">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginBottom="16dp"/>
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -41,8 +49,8 @@
         android:textSize="30dp"
         android:text="plan list"
         android:onClick="startnewplan"
-
         />
+
 
 
 

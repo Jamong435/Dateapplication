@@ -10,8 +10,8 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="List"
-        android:textColor="#E6B1EE"
+        android:text="LOGIN"
+        android:textColor="#F2C94C"
         android:textSize="55dp"
         android:gravity="center"
         android:paddingTop="80dp"
@@ -19,11 +19,7 @@
         />
 
 
-    <com.kakao.usermgmt.LoginButton
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+
 
     <Button
         android:layout_width="wrap_content"
@@ -47,15 +43,15 @@
         android:layout_centerHorizontal="true"
         android:text="이메일"
         android:layout_marginTop="8dp"/>
+    <com.kakao.usermgmt.LoginButton
+        android:layout_below="@id/tv_email"
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_above="@id/tv_name"
-        android:layout_centerHorizontal="true"
-        android:src="@mipmap/ic_launcher"
-        android:layout_marginBottom="16dp"/>
+
+
 
 
 </RelativeLayout>

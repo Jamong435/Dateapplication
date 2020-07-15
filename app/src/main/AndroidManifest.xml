@@ -21,13 +21,15 @@
 
         <activity android:name=".TimeActivity" />
         <activity android:name=".NewPlanActivity" />
-        <activity android:name=".GoogleLogin" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".GoogleLogin" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
+
         </activity>
 
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="6e50334aff94e2a30dcea7d39163035f"/>
