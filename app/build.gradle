@@ -39,4 +39,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/libDaumMapAndroid.jar')
 
+
+    //카카오 로그인
+    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.29.0'
+    implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: '1.29.0'
+
 }
