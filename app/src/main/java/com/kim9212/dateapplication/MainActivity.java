@@ -54,13 +54,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startnewplan(View view) {
-        Intent intent= new Intent(this,NewPlanActivity.class);
-        startActivity(intent);
 
+        Intent intent= new Intent(this,ListActivity.class);
+        startActivity(intent);
     }
 
     public void startsaveddata(View view) {
-        Intent intent= new Intent(this,ListActivity.class);
+
+        Intent intent= new Intent(this,NewPlanActivity.class);
         startActivity(intent);
     }
 }
