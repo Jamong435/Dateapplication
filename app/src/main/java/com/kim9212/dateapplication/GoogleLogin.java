@@ -43,14 +43,13 @@ import static com.kakao.util.helper.Utility.getPackageInfo;
 
 public class GoogleLogin extends AppCompatActivity {
 
-//    TextView tvName;
+    //    TextView tvName;
 //    TextView tvEmail;
     CircleImageView iv;
 
 
     private EditText et_id, et_pass;
     private Button btn_login1, btn_register;
-
 
 
     @Override
@@ -65,7 +64,7 @@ public class GoogleLogin extends AppCompatActivity {
         setContentView(R.layout.activity_google_login);
 //        tvName= findViewById(R.id.tv_name);
 //        tvEmail= findViewById(R.id.tv_email);
-        iv= findViewById(R.id.iv);
+        iv = findViewById(R.id.iv);
 
         et_id = findViewById(R.id.et_id);
         et_pass = findViewById(R.id.et_pass);
@@ -95,7 +94,7 @@ public class GoogleLogin extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
                             if (success) { // 로그인에 성공한 경우
-                                Toast.makeText(GoogleLogin.this,"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(GoogleLogin.this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
                                 String userID = jsonObject.getString("userID");
                                 String userPass = jsonObject.getString("userPassword");
                                 Intent intent = new Intent(GoogleLogin.this, MainActivity.class);
@@ -103,12 +102,11 @@ public class GoogleLogin extends AppCompatActivity {
                                 intent.putExtra("userPass", userPass);
                                 startActivity(intent);
 
-                            }
-                            else { // 로그인에 실패한 경우
-                                if (userID==null){
+                            } else { // 로그인에 실패한 경우
+                                if (userID == null) {
                                     return;
                                 }
-                                Toast.makeText(getApplicationContext(),"로그인에 실패하였습니다",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다", Toast.LENGTH_SHORT).show();
                                 return;
                             }
                         } catch (JSONException e) {
@@ -123,17 +121,15 @@ public class GoogleLogin extends AppCompatActivity {
         });
 
 
-
-
         //keyhas받는 구문
-        String keyHash= getKeyHash(this);
+        String keyHash = getKeyHash(this);
         Log.i("TAG", keyHash);
 
         Session.getCurrentSession().addCallback(sessionCallback);
     }
 
     //카카오 로그인 서버와 연결을 시도하는 세션작업의 결과를 듣는 리스너
-    ISessionCallback sessionCallback= new ISessionCallback() {
+    ISessionCallback sessionCallback = new ISessionCallback() {
         @Override
         public void onSessionOpened() {
             Toast.makeText(GoogleLogin.this, "로그인 세션연결 성공", Toast.LENGTH_SHORT).show();
@@ -150,47 +146,44 @@ public class GoogleLogin extends AppCompatActivity {
     };
 
     //로그인 사용자정보 받기
-    void requestUserInfo(){
+    void requestUserInfo() {
         UserManagement.getInstance().me(new MeV2ResponseCallback() {
             @Override
             public void onSessionClosed(ErrorResult errorResult) {
 
             }
+
             @Override
             public void onSuccess(MeV2Response result) {
                 //사용자 계정 정보 객체
                 UserAccount userAccount = result.getKakaoAccount();
-                if(userAccount==null)
+                if (userAccount == null)
 
                     return;
 //                //1. 이메일 정보 , 닉네임( 보여지지는 않으나 가지고 있음)
-                  //tvEmail.setText( userAccount.getEmail() );
-                  //tvName.setText(nickName);
+                //tvEmail.setText( userAccount.getEmail() );
+                //tvName.setText(nickName);
 
                 //2. 기본 프로필 정보(닉네임, 이미지, 섬네일 이미지)
-                Profile profile= userAccount.getProfile();
+                Profile profile = userAccount.getProfile();
 
-                if(profile==null) return;
+                if (profile == null) return;
 
-                String nickName= profile.getNickname();
-                String imgUrl= profile.getProfileImageUrl();
-
-
+                String nickName = profile.getNickname();
+                String imgUrl = profile.getProfileImageUrl();
 
 
                 //G에 저장하는 과정
-                G.nickName=nickName;
-                G.imgUrl=imgUrl;
+                G.nickName = nickName;
+                G.imgUrl = imgUrl;
 
                 //sharedpreference로 내부저장소에 닉네임과 사진저장
-                getSharedPreferences("name",MODE_PRIVATE).edit().putString("name",G.nickName).commit();
-                getSharedPreferences("name",MODE_PRIVATE).edit().putString("picture",G.imgUrl).commit();
+                getSharedPreferences("name", MODE_PRIVATE).edit().putString("name", G.nickName).commit();
+                getSharedPreferences("name", MODE_PRIVATE).edit().putString("picture", G.imgUrl).commit();
 
 
-
-                Intent intent= new Intent(GoogleLogin.this,MainActivity.class);
+                Intent intent = new Intent(GoogleLogin.this, MainActivity.class);
                 startActivity(intent);
-
 
 
             }
@@ -229,6 +222,7 @@ public class GoogleLogin extends AppCompatActivity {
     public void clickLogout(View view) {
 
         UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+
             @Override
             public void onCompleteLogout() {
                 runOnUiThread(new Runnable() {
@@ -237,7 +231,6 @@ public class GoogleLogin extends AppCompatActivity {
                         Toast.makeText(GoogleLogin.this, "로그아웃 완료", Toast.LENGTH_SHORT).show();
                     }
                 });
-
 
 
                 Session.getCurrentSession().removeCallback(sessionCallback);
