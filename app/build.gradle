@@ -44,4 +44,6 @@ dependencies {
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.29.0'
     implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: '1.29.0'
 
+    //네트워크
+    implementation 'com.android.volley:volley:1.1.0'
 }

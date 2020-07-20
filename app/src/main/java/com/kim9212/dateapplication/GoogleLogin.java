@@ -11,9 +11,14 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -26,6 +31,9 @@ import com.kakao.usermgmt.response.model.Profile;
 import com.kakao.usermgmt.response.model.UserAccount;
 import com.kakao.util.exception.KakaoException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -35,9 +43,14 @@ import static com.kakao.util.helper.Utility.getPackageInfo;
 
 public class GoogleLogin extends AppCompatActivity {
 
-    TextView tvName;
-    TextView tvEmail;
+//    TextView tvName;
+//    TextView tvEmail;
     CircleImageView iv;
+
+
+    private EditText et_id, et_pass;
+    private Button btn_login1, btn_register;
+
 
 
     @Override
@@ -50,11 +63,69 @@ public class GoogleLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_login);
-        tvName= findViewById(R.id.tv_name);
-        tvEmail= findViewById(R.id.tv_email);
+//        tvName= findViewById(R.id.tv_name);
+//        tvEmail= findViewById(R.id.tv_email);
         iv= findViewById(R.id.iv);
 
+        et_id = findViewById(R.id.et_id);
+        et_pass = findViewById(R.id.et_pass);
+        btn_login1 = findViewById(R.id.btn_login1);
+        btn_register = findViewById(R.id.btn_register);
 
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GoogleLogin.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_login1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // EditText에 현재 입력되어있는 값을 get(가져온다)해온다.
+                final String userID = et_id.getText().toString();
+                String userPass = et_pass.getText().toString();
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+
+
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+                            if (success) { // 로그인에 성공한 경우
+                                Toast.makeText(GoogleLogin.this,"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
+                                String userID = jsonObject.getString("userID");
+                                String userPass = jsonObject.getString("userPassword");
+                                Intent intent = new Intent(GoogleLogin.this, MainActivity.class);
+                                intent.putExtra("userID", userID);
+                                intent.putExtra("userPass", userPass);
+                                startActivity(intent);
+
+                            }
+                            else { // 로그인에 실패한 경우
+                                if (userID==null){
+                                    return;
+                                }
+                                Toast.makeText(getApplicationContext(),"로그인에 실패하였습니다",Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                LoginRequest loginRequest = new LoginRequest(userID, userPass, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(GoogleLogin.this);
+                queue.add(loginRequest);
+            }
+        });
+
+
+
+
+        //keyhas받는 구문
         String keyHash= getKeyHash(this);
         Log.i("TAG", keyHash);
 
@@ -92,8 +163,9 @@ public class GoogleLogin extends AppCompatActivity {
                 if(userAccount==null)
 
                     return;
-                //1. 이메일 정보
-                tvEmail.setText( userAccount.getEmail() );
+//                //1. 이메일 정보 , 닉네임( 보여지지는 않으나 가지고 있음)
+                  //tvEmail.setText( userAccount.getEmail() );
+                  //tvName.setText(nickName);
 
                 //2. 기본 프로필 정보(닉네임, 이미지, 섬네일 이미지)
                 Profile profile= userAccount.getProfile();
@@ -102,7 +174,7 @@ public class GoogleLogin extends AppCompatActivity {
 
                 String nickName= profile.getNickname();
                 String imgUrl= profile.getProfileImageUrl();
-                tvName.setText(nickName);
+
 
 
 

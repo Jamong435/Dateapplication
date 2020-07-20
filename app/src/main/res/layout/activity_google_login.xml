@@ -4,54 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GoogleLogin"
-    android:background="@drawable/back2">
+    android:background="@drawable/back2"
+    tools:context=".GoogleLogin">
+
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOGIN"
-        android:textColor="#F2C94C"
-        android:textSize="55dp"
+        android:fontFamily="@font/bold"
         android:gravity="center"
         android:paddingTop="80dp"
-        android:fontFamily="@font/bold"
-        />
+        android:text="LOGIN"
+        android:textColor="#F2C94C"
+        android:textSize="55dp" />
 
+    <EditText
 
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="로그아웃"
-        android:onClick="clickLogout"/>
-
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
+        android:id="@+id/et_id"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="nickname"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/tv_email"
-        android:layout_width="wrap_content"
+        android:backgroundTint="#F2C94C"
+        android:ems="10"
+        android:textSize="20dp"
+        android:fontFamily="@font/bold"
+        android:hint="   ID"
+        android:textColorHint="#F2C94C" />
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:id="@+id/layout_et"
+
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_name"
-        android:layout_centerHorizontal="true"
-        android:text="이메일"
-        android:layout_marginTop="8dp"/>
+        android:layout_below="@id/et_id"
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp"
+        android:backgroundTint="#ffff"
+        android:hint=" password"
+        android:textColorHint="#F2C94C"
+        app:boxBackgroundColor="#00000000"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bold"
+            android:textSize="16dp"
+            android:inputType="textPassword"
+            android:backgroundTint="#F2C94C"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_login1"
+        android:layout_width="150dp"
+        android:textSize="20dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_et"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:backgroundTint="#00000000"
+        android:fontFamily="@font/bold"
+        android:text="로그인"
+        android:textColor="#F2C94C" />
+
+    <Button
+        android:textSize="20dp"
+        android:id="@+id/btn_register"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_et"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:backgroundTint="#00000000"
+        android:fontFamily="@font/bold"
+        android:text="회원가입"
+        android:textColor="#F2C94C" />
+
+
+    <!--    <Button-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="로그아웃"-->
+    <!--        android:onClick="clickLogout"/>-->
+
+
     <com.kakao.usermgmt.LoginButton
-        android:layout_below="@id/tv_email"
+
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
 
-
-
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="50dp" />
 
 
 </RelativeLayout>

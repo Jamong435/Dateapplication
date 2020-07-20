@@ -38,7 +38,7 @@
         android:textSize="30dp"
         android:id="@+id/a"
         android:text="new plan"
-        android:onClick="startsaveddata"
+        android:onClick="startnewplan"
         />
     <Button
         android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
         android:layout_below="@+id/a"
         android:textSize="30dp"
         android:text="plan list"
-        android:onClick="startnewplan"
+        android:onClick="startsaveddata"
         />
 
 
