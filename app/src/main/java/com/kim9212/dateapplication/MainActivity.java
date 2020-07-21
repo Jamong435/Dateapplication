@@ -38,13 +38,21 @@ public class MainActivity extends AppCompatActivity {
         title=findViewById(R.id.title);
         iv=findViewById(R.id.iv);
 
+        //카카오로 로그인했을시
         Glide.with(MainActivity.this).load(G.imgUrl).into(iv);
         title.setText(G.nickName+"님오늘은뭐해요?");
-
-
         Intent intent= getIntent();
         String userID= intent.getStringExtra("userID");
 
+
+        //구글로 로그인했을시
+        String nickname= intent.getStringExtra("nickname");
+        String photourl= intent.getStringExtra("photoUrl");
+        title.setText(nickname);
+        Glide.with(this).load(photourl).into(iv);
+
+
+        //닷홈으로 로그인했을시
         if (G.nickName==null){
             title.setText(userID+"님오늘은뭐해요?");
         }
