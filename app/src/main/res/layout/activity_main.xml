@@ -19,7 +19,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="오늘 뭐하지"
+        android:text="오늘 모행"
         android:textColor="#E6B1EE"
         android:textSize="55dp"
         android:gravity="center"
@@ -36,9 +36,10 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
         android:textSize="30dp"
+        android:textColor="#f7f7f7f7"
         android:id="@+id/a"
         android:text="new plan"
-        android:onClick="startsaveddata"
+        android:onClick="startnewplan"
         />
     <Button
         android:layout_width="wrap_content"
@@ -48,10 +49,26 @@
         android:layout_below="@+id/a"
         android:textSize="30dp"
         android:text="plan list"
-        android:onClick="startnewplan"
+        android:onClick="startsaveddata"
         />
 
 
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="로그아웃"-->
+<!--            android:onClick="clickLogout"/>-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="'최고의행복은\n내가 사랑하고 있다는 확신이다'"
+        android:textSize="24dp"
+        android:textColor="#f7f7f7f7"
+        android:gravity="center"
+        android:fontFamily="@font/regular"
+        android:layout_marginBottom="70dp"/>
 
 
 

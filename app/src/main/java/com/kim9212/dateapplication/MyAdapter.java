@@ -39,9 +39,6 @@ public class MyAdapter extends RecyclerView.Adapter {
         vh.tv_time.setText(item.tv_time);
         vh.tv_where.setText(item.tv_where);
 
-
-
-
     }
 
     @Override
@@ -54,8 +51,6 @@ public class MyAdapter extends RecyclerView.Adapter {
         TextView tv_time;
         TextView tv_where;
 
-
-
         public VH(@NonNull View itemView) {
             super(itemView);
             tv_time=itemView.findViewById(R.id.tv_time);
@@ -67,13 +62,8 @@ public class MyAdapter extends RecyclerView.Adapter {
                     Item item=items.get(getLayoutPosition());
                     Intent intent= new Intent(context,NewPlanActivity.class);
 
-
-
-
                 }
             });
-
-
         }
     }
 

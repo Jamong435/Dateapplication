@@ -30,14 +30,10 @@ public class MainActivity extends AppCompatActivity {
     CircleImageView iv;
     TextView title;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        String a= getSigneture(this);
 
         title=findViewById(R.id.title);
         iv=findViewById(R.id.iv);
@@ -46,44 +42,24 @@ public class MainActivity extends AppCompatActivity {
         title.setText(G.nickName+"님오늘은뭐해요?");
 
 
+        Intent intent= getIntent();
+        String userID= intent.getStringExtra("userID");
 
-
-    }
-
-    public static String getSigneture(Context context){
-        PackageManager pm = context.getPackageManager();
-        try{
-            PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
-
-            for(int i = 0; i < packageInfo.signatures.length; i++){
-                Signature signature = packageInfo.signatures[i];
-                try {
-                    MessageDigest md = MessageDigest.getInstance("SHA");
-                    md.update(signature.toByteArray());
-                    return Base64.encodeToString(md.digest(), Base64.NO_WRAP);
-                } catch (NoSuchAlgorithmException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-        }catch(PackageManager.NameNotFoundException e){
-            e.printStackTrace();
+        if (G.nickName==null){
+            title.setText(userID+"님오늘은뭐해요?");
         }
-        return null;
+
     }
 
     public void startnewplan(View view) {
-
+        Intent intent= new Intent(this,NewPlanActivity.class);
+        startActivity(intent);
+    }
+    public void startsaveddata(View view) {
         Intent intent= new Intent(this,ListActivity.class);
         startActivity(intent);
     }
 
-    public void startsaveddata(View view) {
-
-        Intent intent= new Intent(this,NewPlanActivity.class);
-        startActivity(intent);
-    }
 
 
 }
