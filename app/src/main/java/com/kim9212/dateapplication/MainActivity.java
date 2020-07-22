@@ -1,6 +1,8 @@
 package com.kim9212.dateapplication;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.navigation.NavigationView;
 import com.kakao.auth.Session;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
@@ -30,10 +33,20 @@ public class MainActivity extends AppCompatActivity {
     CircleImageView iv;
     TextView title;
 
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        drawerLayout= findViewById(R.id.layout_drawer);
+        navigationView= findViewById(R.id.nav);
+
+
 
         title=findViewById(R.id.title);
         iv=findViewById(R.id.iv);
