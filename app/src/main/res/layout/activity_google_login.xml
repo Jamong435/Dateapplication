@@ -85,6 +85,20 @@
         android:text="회원가입"
         android:textColor="#F2C94C" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_register"
+        android:layout_marginTop="8dp"
+        android:text="아이디 / 비밀번호 찾기"
+        android:layout_centerInParent="true"
+        android:textColor="#F2C94C"
+        android:fontFamily="@font/bold"
+        android:onClick="clicktextview"
+        android:textSize="15dp"/>
+
+
+
 
 
 
@@ -97,14 +111,14 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="110dp" />
+        android:layout_marginBottom="90dp" />
     <com.google.android.gms.common.SignInButton
         android:id="@+id/btn_google"
         android:layout_width="320dp"
         android:layout_centerInParent="true"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="45dp"/>
+        android:layout_marginBottom="30dp"/>
 
 
 </RelativeLayout>

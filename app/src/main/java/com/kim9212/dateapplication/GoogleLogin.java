@@ -316,4 +316,9 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
+    public void clicktextview(View view) {
+        Intent intent= new Intent(this,RegisterActivity.class);
+        startActivity(intent);
+    }
 }
