@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         String userID= intent.getStringExtra("userID");
 
 
-        //구글로 로그인했을시
+//        구글로 로그인했을시
         String nickname= intent.getStringExtra("nickname");
         String photourl= intent.getStringExtra("photoUrl");
         title.setText(nickname);
@@ -53,8 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         //닷홈으로 로그인했을시
-        if (G.nickName==null){
-            title.setText(userID+"님오늘은뭐해요?");
+        if (G.nickName==null) {
+            title.setText(userID + "님오늘은뭐해요?");
+        }
+        //구글에서 넘어온 이름이 null값일떄
+        if(nickname==null){
+            title.setText("출발해볼까요?");
         }
 
     }
