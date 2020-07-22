@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        구글로 로그인했을시
-        String nickname= intent.getStringExtra("nickname");
+        String nick= intent.getStringExtra("nickname");
         String photourl= intent.getStringExtra("photoUrl");
-        title.setText(nickname);
+        title.setText(nick);
         Glide.with(this).load(photourl).into(iv);
 
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             title.setText(userID + "님오늘은뭐해요?");
         }
         //구글에서 넘어온 이름이 null값일떄
-        if(nickname==null){
+        if(nick==null){
             title.setText("출발해볼까요?");
         }
 
@@ -84,7 +84,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent= new Intent(this,ListActivity.class);
         startActivity(intent);
     }
-
-
 
 }

@@ -1,71 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <net.daum.mf.map.api.MapView
-            android:id="@+id/map_view"
-            android:layout_width="match_parent"
-            android:layout_height="539dp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="위도"
-                android:textColor="#000000"
-                android:textSize="30dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="경도"
-                android:textColor="#000000"
-                android:textSize="30dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="주소"
-                android:textColor="#000000"
-                android:textSize="30dp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </RelativeLayout>
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        >
+        android:orientation="horizontal">
 
+        <EditText
+            android:id="@+id/et"
+            android:layout_width="252dp"
+            android:layout_height="wrap_content"
+            android:hint="http://www.naver.com"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:maxLines="1" />
 
         <Button
-            android:id="@+id/button_sms"
+            android:id="@+id/bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SMS" />
-        <Button
-            android:id="@+id/button_kakao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="KAKAO TALK" />
+            android:layout_marginLeft="30dp"
+            android:onClick="loadsite"
+            android:text="이동" />
+
+
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:orientation="vertical">
+
+        <WebView
+            android:id="@+id/wv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="100"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et1"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="데이트지역!"
+                android:layout_weight="10"
+                android:maxLines="1"/>
+
+            <Button
+                android:id="@+id/bt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:onClick="gopick_btn"
+                android:layout_weight="2"
+                android:text="맛집!" />
+            <Button
+                android:id="@+id/bt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="2"
+                android:onClick="saved_btn"
+                android:text="저장" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 </LinearLayout>

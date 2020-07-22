@@ -84,6 +84,10 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
         btn_register = findViewById(R.id.btn_register);
 
 
+
+
+
+
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -157,14 +161,8 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
             }
         });
 
-
-        //keyhas받는 구문
-        String keyHash = getKeyHash(this);
-        Log.i("TAG", keyHash);
-
         Session.getCurrentSession().addCallback(sessionCallback);
     }
-
     //카카오 로그인 서버와 연결을 시도하는 세션작업의 결과를 듣는 리스너
     ISessionCallback sessionCallback = new ISessionCallback() {
         @Override
@@ -238,43 +236,48 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
         Session.getCurrentSession().removeCallback(sessionCallback);
     }
 
-    //카카오 키해시 리턴하는 메소드
-    public static String getKeyHash(final Context context) {
-        PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
-        if (packageInfo == null)
-            return null;
 
-        for (Signature signature : packageInfo.signatures) {
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                return Base64.encodeToString(md.digest(), Base64.NO_WRAP);
-            } catch (NoSuchAlgorithmException e) {
-                Log.w("TAG", "Unable to get MessageDigest. signature=" + signature, e);
-            }
-        }
-        return null;
-    }
+    //        //keyhas받는 구문
+//        String keyHash = getKeyHash(this);
+//        Log.i("TAG", keyHash);
 
-    public void clickLogout(View view) {
+//    //카카오 키해시 리턴하는 메소드
+//    public static String getKeyHash(final Context context) {
+//        PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
+//        if (packageInfo == null)
+//            return null;
+//
+//        for (Signature signature : packageInfo.signatures) {
+//            try {
+//                MessageDigest md = MessageDigest.getInstance("SHA");
+//                md.update(signature.toByteArray());
+//                return Base64.encodeToString(md.digest(), Base64.NO_WRAP);
+//            } catch (NoSuchAlgorithmException e) {
+//                Log.w("TAG", "Unable to get MessageDigest. signature=" + signature, e);
+//            }
+//        }
+//        return null;
+//    }
 
-        UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
-
-            @Override
-            public void onCompleteLogout() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(GoogleLogin.this, "로그아웃 완료", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
-                Session.getCurrentSession().removeCallback(sessionCallback);
-            }
-        });
-
-    }
+//    public void clickLogout(View view) {
+//
+//        UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+//
+//            @Override
+//            public void onCompleteLogout() {
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Toast.makeText(GoogleLogin.this, "로그아웃 완료", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//
+//
+//                Session.getCurrentSession().removeCallback(sessionCallback);
+//            }
+//        });
+//
+//    }
 
 
 
@@ -293,7 +296,7 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
 
     }
 
-    private void resultLogin(final GoogleSignInAccount account) {
+    private void resultLogin(final GoogleSignInAccount account) { //구글관련
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
