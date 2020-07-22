@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="@drawable/back4">
 
     <EditText
         android:id="@+id/et_id"
@@ -14,6 +15,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="아이디"
+        android:textColorHint="#000000"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +52,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:gravity="center"
+        android:textColorHint="#000000"
         android:hint="이름"
         android:inputType="textPersonName" />
 
@@ -62,6 +65,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:gravity="center"
+        android:textColorHint="#000000"
         android:hint="나이"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/et_name"
@@ -69,10 +73,13 @@
         app:layout_constraintTop_toBottomOf="@+id/et_name" />
 
     <Button
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/button"
         android:text="회원가입"
         app:layout_constraintEnd_toEndOf="@+id/et_age"
         app:layout_constraintStart_toStartOf="@+id/et_age"
