@@ -21,6 +21,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -35,6 +39,7 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha04'
 
     //카카오 맵
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -47,6 +52,8 @@ dependencies {
 
     //네트워크
     implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.2' //retrofit2
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.2'
 
   //구글로그인
     implementation 'com.google.firebase:firebase-analytics:17.2.2'

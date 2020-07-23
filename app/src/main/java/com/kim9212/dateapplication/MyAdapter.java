@@ -78,4 +78,5 @@ public class MyAdapter extends RecyclerView.Adapter {
             this.tv_where = tv_where;
         }
     }
+
 }

@@ -168,6 +168,8 @@ public class MapActivity extends AppCompatActivity  {
 
 
     public void clickbtn2(View view) {
+        Intent intent = new Intent(this,MovieListActivity.class);
+        startActivity(intent);
 
 
     }
