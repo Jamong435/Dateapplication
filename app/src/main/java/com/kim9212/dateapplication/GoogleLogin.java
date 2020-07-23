@@ -195,9 +195,10 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
                 if (userAccount == null)
 
                     return;
-//                //1. 이메일 정보 , 닉네임( 보여지지는 않으나 가지고 있음)
+                //1. 이메일 정보 , 닉네임( 보여지지는 않으나 가지고 있음)
                 //tvEmail.setText( userAccount.getEmail() );
                 //tvName.setText(nickName);
+
 
                 //2. 기본 프로필 정보(닉네임, 이미지, 섬네일 이미지)
                 Profile profile = userAccount.getProfile();
@@ -206,17 +207,12 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
 
                 String nickName = profile.getNickname();
                 String imgUrl = profile.getProfileImageUrl();
-
-
                 //G에 저장하는 과정
                 G.nickName = nickName;
                 G.imgUrl = imgUrl;
-
                 //sharedpreference로 내부저장소에 닉네임과 사진저장
                 getSharedPreferences("name", MODE_PRIVATE).edit().putString("name", G.nickName).commit();
                 getSharedPreferences("name", MODE_PRIVATE).edit().putString("picture", G.imgUrl).commit();
-
-
                 Intent intent = new Intent(GoogleLogin.this, MainActivity.class);
                 startActivity(intent);
 
