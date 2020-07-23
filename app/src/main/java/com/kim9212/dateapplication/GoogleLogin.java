@@ -10,6 +10,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -82,6 +83,11 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
         et_pass = findViewById(R.id.et_pass);
         btn_login1 = findViewById(R.id.btn_login1);
         btn_register = findViewById(R.id.btn_register);
+
+        String strChange = "<font color=\"#F2994A\">L</font>";
+        String strBack = "OGIN";
+        TextView title = (TextView)findViewById(R.id.title);
+        title.setText(Html.fromHtml(strChange+strBack));
 
 
 
@@ -233,10 +239,10 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
     }
 
 
-    //        //keyhas받는 구문
-//        String keyHash = getKeyHash(this);
-//        Log.i("TAG", keyHash);
+            //keyhas받는 구문
 
+//    String keyHash= getKeyHash(this);
+//    //        Log.i("TAG", keyHash);
 //    //카카오 키해시 리턴하는 메소드
 //    public static String getKeyHash(final Context context) {
 //        PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
@@ -251,6 +257,7 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
 //            } catch (NoSuchAlgorithmException e) {
 //                Log.w("TAG", "Unable to get MessageDigest. signature=" + signature, e);
 //            }
+//
 //        }
 //        return null;
 //    }

@@ -50,7 +50,7 @@ public class MapActivity extends AppCompatActivity  {
     @Override
     protected void onStart() {
         super.onStart();
-        wv.loadUrl("https://search.naver.com/search.naver?sm=top_hty&fbm=0&ie=utf8&query=%EC%98%A4%EB%8A%98%EB%AD%90%ED%95%98%EC%A7%80");
+        wv.loadUrl("https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EB%8D%B0%EC%9D%B4%ED%8A%B8+%EB%8F%99%EB%84%A4+%EC%B6%94%EC%B2%9C&oquery=%EB%8D%B0%EC%9D%B4%ED%8A%B8+%EB%8F%99%EB%84%A4&tqi=UxEr4lp0J14ssg%2FccbNssssstgR-399963");
         WebSettings webSettings = wv.getSettings();
         webSettings.setJavaScriptEnabled(true); // 웹페이지 자바스클비트 허용 여부
         webSettings.setSupportMultipleWindows(false); // 새창 띄우기 허용 여부
@@ -169,6 +169,10 @@ public class MapActivity extends AppCompatActivity  {
 
     public void clickbtn2(View view) {
 
+
+    }
+
+    public void clickbtn3(View view) {
         try {
             String s = et1.getText().toString();
 
@@ -178,13 +182,11 @@ public class MapActivity extends AppCompatActivity  {
         }catch ( Exception e){
             throw e;
         }
-    }
-
-    public void clickbtn3(View view) {
 
     }
 
     public void clickbtn4(View view) {
+
 
     }
 }
