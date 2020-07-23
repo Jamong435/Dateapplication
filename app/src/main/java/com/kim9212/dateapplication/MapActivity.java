@@ -153,7 +153,7 @@ public class MapActivity extends AppCompatActivity  {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void gopick_btn(View view) {
+    public void clickbtn(View view) {
 
         try {
             String s = et1.getText().toString();
@@ -166,6 +166,25 @@ public class MapActivity extends AppCompatActivity  {
         }
     }
 
-    public void saved_btn(View view) {
+
+    public void clickbtn2(View view) {
+
+        try {
+            String s = et1.getText().toString();
+
+            Uri uri = Uri.parse("kakaomap://search?q=" + s + "영화관" + "&p=37.537229,127.005515");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }catch ( Exception e){
+            throw e;
+        }
+    }
+
+    public void clickbtn3(View view) {
+
+    }
+
+    public void clickbtn4(View view) {
+
     }
 }
