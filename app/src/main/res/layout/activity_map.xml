@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MapActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,15 +45,15 @@
             android:layout_weight="9" />
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="100"
-            android:orientation="horizontal">
+            android:layout_weight="50"
+            >
 
             <EditText
                 android:id="@+id/et1"
-                android:layout_width="200dp"
+                android:layout_width="275dp"
                 android:layout_height="wrap_content"
                 android:hint="데이트지역!"
                 android:layout_weight="10"
@@ -65,7 +65,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:onClick="gopick_btn"
+                android:layout_below="@id/et1"
                 android:layout_weight="2"
+                android:background="@drawable/bg_button_round"
                 android:text="맛집!" />
             <Button
                 android:id="@+id/bt2"
@@ -73,9 +75,33 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="2"
+                android:layout_below="@id/et1"
+                android:background="@drawable/bg_button_round"
+                android:layout_toRightOf="@id/bt1"
                 android:onClick="saved_btn"
                 android:text="저장" />
-        </LinearLayout>
+            <Button
+                android:id="@+id/bt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="2"
+                android:layout_below="@id/et1"
+                android:layout_toRightOf="@id/bt2"
+                android:onClick="saved_btn"
+                android:background="@drawable/bg_button_round"
+                android:text="저장" />
+            <Button
+                android:id="@+id/bt4"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="2"
+                android:background="@drawable/bg_button_round"
+                android:layout_toRightOf="@id/et1"
+                android:onClick="saved_btn"
+                android:text="저장" />
+        </RelativeLayout>
 
 
     </LinearLayout>
