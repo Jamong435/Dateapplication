@@ -37,6 +37,7 @@ public class MovieListActivity extends AppCompatActivity {
                 .build();
         RetrofitInterface retrofitInterface= retrofit.create(RetrofitInterface.class);
 
+
         //현재 시간 구해오기
         long now= System.currentTimeMillis();
         Date mDate= new Date((now)+(1000*60*60*24*-1));
@@ -50,6 +51,7 @@ public class MovieListActivity extends AppCompatActivity {
                 Map<String,Object> boxOfficeResult= (Map<String, Object>) response.body().get("boxOfficeResult");
                 ArrayList<Map<String, Object>> jsonList = (ArrayList) boxOfficeResult.get("dailyBoxOfficeList");
                 mAdapter=new MovieAdapter(jsonList);
+                recyclerView.setAdapter(mAdapter);
 
             }
 
@@ -59,10 +61,11 @@ public class MovieListActivity extends AppCompatActivity {
             }
         });
 
+
+
+
     }// onCreate()..
 
-    public void click_btn(View view) {
-        recyclerView.setAdapter(mAdapter);
-    }
+
 
 }// MainActivity class..
