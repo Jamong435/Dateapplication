@@ -14,7 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MovieListActivity"></activity>
+        <activity android:name=".IntroActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MovieListActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SavedData" />
         <activity android:name=".ListActivity" />
@@ -28,11 +35,7 @@
         <activity android:name=".TimeActivity" />
         <activity android:name=".NewPlanActivity" />
         <activity android:name=".GoogleLogin">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
 
