@@ -54,7 +54,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
             //"rank", "movieNm", "openDt"은 Json파일에 저장되어 있던 key값
             tvRank.setText(item.get("rank").toString());
             tvMovieNm.setText(item.get("movieNm").toString());
-            tvOpenDt.setText(item.get("openDt").toString());
+            tvOpenDt.setText("누적매출:"+item.get("salesAmt").toString()+"원");
 
 
         }
