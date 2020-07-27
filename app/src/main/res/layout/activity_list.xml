@@ -18,11 +18,21 @@
         android:fontFamily="@font/bold"
         />
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_below="@id/title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycler"
-        android:layout_below="@id/title"/>
+        android:layout_height="match_parent"/>
 
+    <Button
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="30dp"
+        android:background="@drawable/bg_button_round"
+        android:layout_width="150dp"
+        android:text="메인화면으로"
+        android:layout_height="wrap_content"
+        android:onClick="clickbtn7"/>
 
 
 </RelativeLayout>

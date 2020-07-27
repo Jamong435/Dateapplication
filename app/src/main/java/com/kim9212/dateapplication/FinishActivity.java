@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,6 +60,12 @@ public class FinishActivity extends AppCompatActivity {
 
         adapter = new CustomAdapter(arrayList, this);
         recyclerView.setAdapter(adapter); // 리사이클러뷰에 어댑터 연결
+
+    }
+
+    public void clickbtn5(View view) {
+        Intent intent= new Intent(this,NewPlanActivity.class);
+        startActivity(intent);
 
     }
 }

@@ -212,7 +212,8 @@ public class MapActivity extends AppCompatActivity {
     }
 
     public void clickbtn4(View view) {
-
+        Intent intent= new Intent(this,TimeActivity.class);
+        startActivity(intent);
 
     }
 }
