@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="오늘 모행"
-        android:textColor="#E6B1EE"
+        android:textColor="#FF9800"
         android:textSize="55dp"
         android:gravity="center"
         android:paddingTop="80dp"

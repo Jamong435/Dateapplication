@@ -67,4 +67,9 @@ public class NewPlanActivity extends AppCompatActivity {
         Intent intent= new Intent(this,MapActivity.class);
         startActivity(intent);
     }
+
+    public void clickbtnback(View view) {
+        Intent intent= new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
 }

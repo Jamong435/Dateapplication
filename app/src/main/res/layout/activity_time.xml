@@ -14,7 +14,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/bold"
         android:gravity="center"
-        android:text="언제 가실꺼에요?"
+        android:text="언제 갈까요?"
         android:textColor="#ff6666"
         android:textSize="60dp" />
 

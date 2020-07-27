@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="List"
-        android:textColor="#E6B1EE"
+        android:textColor="#FF9800"
         android:textSize="55dp"
         android:gravity="center"
         android:paddingTop="80dp"
@@ -29,8 +29,10 @@
         android:layout_alignParentRight="true"
         android:layout_margin="30dp"
         android:background="@drawable/bg_button_round"
-        android:layout_width="150dp"
-        android:text="메인화면으로"
+        android:layout_width="100dp"
+        android:fontFamily="@font/bold"
+        android:backgroundTint="#FF9800"
+        android:text="메인화면"
         android:layout_height="wrap_content"
         android:onClick="clickbtn7"/>
 

@@ -288,8 +288,13 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void clickable(View view) {
-        Intent intent= new Intent(this,FinishActivity.class);
+        Intent intent= new Intent(this,MainActivity.class);
         startActivity(intent);
 
+    }
+
+    public void clickable2(View view) {
+        Intent intent= new Intent(this,FinishActivity.class);
+        startActivity(intent);
     }
 }
