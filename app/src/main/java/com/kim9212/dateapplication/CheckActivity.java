@@ -205,7 +205,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.w("getFirebaseDatabase","loadPost:onCancelled", databaseError.toException());
+
             }
         };
         Query sortbyAge = FirebaseDatabase.getInstance().getReference().child("id_list").orderByChild(sort);
@@ -234,7 +234,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
                     getFirebaseDatabase();
                     setInsertMode();
                 }else{
-                    Toast.makeText(CheckActivity.this, "이미 존재하는 ID 입니다. 다른 ID로 설정해주세요.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CheckActivity.this, "이미 존재하는 지역 입니다.", Toast.LENGTH_LONG).show();
                 }
                 edit_ID.requestFocus();
                 edit_ID.setCursorVisible(true);

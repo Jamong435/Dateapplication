@@ -2,10 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="120dp"
     app:contentPaddingTop="4dp"
-    android:layout_margin="15dp"
+    android:layout_margin="10dp"
     android:backgroundTint="#00000000"
+    android:background="@drawable/back4"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,54 +17,67 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:orientation="vertical">
 
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="#231C01"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:layout_centerVertical="true"/>
 
 
             <TextView
                 android:id="@+id/tv_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="장소"
-                android:textSize="40dp"
+                android:layout_marginLeft="50dp"
                 android:fontFamily="@font/bold"
-                android:textColor="#000000"/>
+                android:text="장소"
+                android:textColor="#2749F4"
+                android:textSize="37dp" />
 
             <TextView
                 android:id="@+id/tv_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/tv_id"
+                android:layout_marginLeft="60dp"
+
                 android:fontFamily="@font/bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:textSize="30dp"
-                android:textColor="#2C2B2B"
-                android:text="시간" />
-            <TextView
-                android:layout_below="@id/tv_age"
-                android:id="@+id/tv_name"
-                android:textColor="#2C2B2B"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:fontFamily="@font/bold"
-                android:textSize="20dp"
-                android:text="설명" />
+                android:text="시간"
+                android:textColor="#09095C"
+                android:textSize="30dp" />
 
             <TextView
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:padding="15dp"
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_age"
+                android:layout_marginLeft="60dp"
+                android:fontFamily="@font/bold"
+
+                android:text="설명"
+                android:textColor="#2C2B2B"
+                android:textSize="20dp" />
+
+            <TextView
                 android:id="@+id/tv_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:textColor="#2C2B2B"
-                android:fontFamily="@font/bold"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
                 android:layout_gravity="right"
-                android:text="알람" />
+                android:layout_margin="2dp"
+                android:fontFamily="@font/bold"
+               android:textSize="20dp"
+                android:padding="10dp"
+                android:text="알람"
+                android:textColor="#2C2B2B" />
 
 
         </RelativeLayout>

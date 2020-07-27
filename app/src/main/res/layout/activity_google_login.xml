@@ -15,7 +15,7 @@
         android:gravity="center"
         android:paddingTop="80dp"
         android:text="LOGIN"
-        android:textColor="#F2C94C"
+        android:textColor="#F6B900"
         android:textSize="55dp" />
 
     <EditText
@@ -24,12 +24,12 @@
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:backgroundTint="#F2C94C"
+        android:backgroundTint="#F6B900"
         android:ems="10"
         android:textSize="20dp"
         android:fontFamily="@font/bold"
         android:hint="   ID"
-        android:textColorHint="#F2C94C" />
+        android:textColorHint="#F6B900" />
 
     <com.google.android.material.textfield.TextInputLayout
 
@@ -42,7 +42,7 @@
         android:layout_margin="16dp"
         android:backgroundTint="#ffff"
         android:hint=" password"
-        android:textColorHint="#F2C94C"
+        android:textColorHint="#F6B900"
         app:boxBackgroundColor="#00000000"
 
         >
@@ -54,7 +54,7 @@
             android:fontFamily="@font/bold"
             android:textSize="16dp"
             android:inputType="textPassword"
-            android:backgroundTint="#F2C94C"/>
+            android:backgroundTint="#F6B900"/>
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -70,7 +70,7 @@
         android:backgroundTint="#00000000"
         android:fontFamily="@font/bold"
         android:text="로그인"
-        android:textColor="#F2C94C" />
+        android:textColor="#F6B900" />
 
     <Button
         android:textSize="20dp"
@@ -83,7 +83,7 @@
         android:backgroundTint="#00000000"
         android:fontFamily="@font/bold"
         android:text="회원가입"
-        android:textColor="#F2C94C" />
+        android:textColor="#F6B900" />
 
     <TextView
         android:layout_width="wrap_content"
