@@ -14,16 +14,16 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/bold"
-        android:paddingTop="30dp"
+        android:paddingTop="80dp"
         android:text="약속장소: "
         android:textColor="#474545"
         android:textSize="25dp" />
 
     <EditText
         android:id="@+id/edit_id"
-        android:layout_width="wrap_content"
+        android:layout_width="185dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:layout_toRightOf="@+id/text_id"
         android:ems="10"
         android:inputType="textPersonName"
@@ -45,15 +45,15 @@
 
     <EditText
         android:id="@+id/edit_name"
-        android:layout_width="222dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/text_name"
         android:layout_alignEnd="@+id/edit_id"
         android:layout_alignBottom="@+id/text_name"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="-10dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="-11dp"
         android:layout_toEndOf="@+id/text_name"
-        android:ems="10"
+        android:ems="50"
         android:inputType="textPersonName"
         android:maxLength="50"
         android:textColor="#FA8201" />
@@ -72,11 +72,13 @@
 
     <EditText
         android:id="@+id/edit_age"
-        android:layout_width="wrap_content"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/text_age"
         android:layout_alignEnd="@+id/check_woman"
         android:layout_alignBottom="@+id/text_age"
+        android:layout_marginEnd="-14dp"
+        android:layout_marginBottom="-11dp"
         android:layout_toEndOf="@+id/text_age"
         android:ems="10"
         android:inputType="textPersonName"
@@ -120,13 +122,7 @@
         android:textColor="#474545"
         android:textSize="20dp" />
 
-    <View
-        android:id="@+id/line1"
-        android:layout_width="match_parent"
-        android:layout_height="2dip"
-        android:layout_below="@+id/text_gender"
-        android:layout_marginTop="20dp"
-        android:background="#AAAAAA" />
+
 
 
     <Button
@@ -138,6 +134,7 @@
         android:layout_marginEnd="12dp"
         android:background="#FF5722"
         android:fontFamily="@font/bold"
+        android:textSize="17dp"
         android:text="Plan Save" />
 
     <Button
@@ -154,8 +151,8 @@
 
         android:id="@+id/scroll_view"
         android:layout_width="400dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="270dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="350dp"
         android:fillViewport="true"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp"
@@ -197,5 +194,16 @@
         android:fontFamily="@font/bold"
         android:onClick="clickable"
         android:text="초기화면" />
+
+    <Button
+        android:id="@+id/b"
+        android:layout_width="23dp"
+        android:layout_height="20dp"
+        android:backgroundTint="#050404"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:layout_margin="20dp"
+        android:onClick="clickbtnback1" />
 
 </RelativeLayout>

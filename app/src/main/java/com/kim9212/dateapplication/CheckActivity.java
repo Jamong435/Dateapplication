@@ -189,7 +189,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
                     String key = postSnapshot.getKey();
                     FirebasePost get = postSnapshot.getValue(FirebasePost.class);
                     String[] info = {get.id, get.name, String.valueOf(get.age), get.gender};
-                    String Result = setTextLength(info[0],15) + setTextLength(info[1],15) + setTextLength(info[2],15) + setTextLength(info[3],15);
+                    String Result = setTextLength(info[0],15) + setTextLength(info[1],30) + setTextLength(info[2],15) + setTextLength(info[3],15);
                     arrayData.add(Result);
                     arrayIndex.add(key);
 
@@ -295,6 +295,11 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
 
     public void clickable2(View view) {
         Intent intent= new Intent(this,FinishActivity.class);
+        startActivity(intent);
+    }
+
+    public void clickbtnback1(View view) {
+        Intent intent= new Intent(this,MapActivity.class);
         startActivity(intent);
     }
 }

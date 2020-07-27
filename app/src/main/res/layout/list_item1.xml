@@ -60,7 +60,7 @@
                 android:layout_below="@id/tv_id"
                 android:layout_marginLeft="3dp"
                 android:fontFamily="@font/bold"
-                android:text="AM"
+                android:text="까지"
                 android:textColor="#FA9C37"
                 android:textSize="15dp" />
 
