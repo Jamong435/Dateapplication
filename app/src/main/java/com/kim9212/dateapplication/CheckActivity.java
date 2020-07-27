@@ -35,7 +35,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
 
     Button btn_Update;
     Button btn_Insert;
-    Button btn_Select;
+
     EditText edit_ID;
     EditText edit_Name;
     EditText edit_Age;
@@ -45,9 +45,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
     TextView text_Gender;
     CheckBox check_Man;
     CheckBox check_Woman;
-    CheckBox check_ID;
-    CheckBox check_Name;
-    CheckBox check_Age;
+
 
     String ID;
     String name;
@@ -70,8 +68,6 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
         btn_Insert.setOnClickListener(this);
         btn_Update = (Button) findViewById(R.id.btn_update);
         btn_Update.setOnClickListener(this);
-//        btn_Select = (Button) findViewById(R.id.btn_select);
-//        btn_Select.setOnClickListener(this);
         edit_ID = (EditText) findViewById(R.id.edit_id);
         edit_Name = (EditText) findViewById(R.id.edit_name);
         edit_Age = (EditText) findViewById(R.id.edit_age);
@@ -83,20 +79,12 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
         check_Man.setOnClickListener(this);
         check_Woman = (CheckBox) findViewById(R.id.check_woman);
         check_Woman.setOnClickListener(this);
-//        check_ID = (CheckBox) findViewById(R.id.check_userid);
-//        check_ID.setOnClickListener(this);
-//        check_Name = (CheckBox) findViewById(R.id.check_name);
-//        check_Name.setOnClickListener(this);
-//        check_Age = (CheckBox) findViewById(R.id.check_age);
-//        check_Age.setOnClickListener(this);
 
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
         ListView listView = (ListView) findViewById(R.id.db_list_view);
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(onClickListener);
         listView.setOnItemLongClickListener(longClickListener);
-
-//        check_ID.setChecked(true);
         getFirebaseDatabase();
 
         btn_Insert.setEnabled(true);

@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    app:cardCornerRadius="8dp"
     app:contentPaddingTop="4dp"
-    android:layout_margin="13dp"
-    android:background="@drawable/button"
+    android:layout_margin="15dp"
+    android:backgroundTint="#00000000"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,41 +13,60 @@
         android:orientation="horizontal">
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="아이디" />
+
 
             <TextView
                 android:id="@+id/tv_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="아이디" />
+                android:text="장소"
+                android:textSize="40dp"
+                android:fontFamily="@font/bold"
+                android:textColor="#000000"/>
 
             <TextView
                 android:id="@+id/tv_age"
+                android:layout_below="@id/tv_id"
+                android:fontFamily="@font/bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="비밀번호" />
+                android:textSize="30dp"
+                android:textColor="#2C2B2B"
+                android:text="시간" />
+            <TextView
+                android:layout_below="@id/tv_age"
+                android:id="@+id/tv_name"
+                android:textColor="#2C2B2B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/bold"
+                android:textSize="20dp"
+                android:text="설명" />
 
             <TextView
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:padding="15dp"
                 android:id="@+id/tv_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="테스트" />
+                android:textColor="#2C2B2B"
+                android:fontFamily="@font/bold"
+                android:layout_gravity="right"
+                android:text="알람" />
 
-        </LinearLayout>
+
+        </RelativeLayout>
 
 
     </LinearLayout>
