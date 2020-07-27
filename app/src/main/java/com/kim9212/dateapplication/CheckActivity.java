@@ -189,7 +189,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
                     String key = postSnapshot.getKey();
                     FirebasePost get = postSnapshot.getValue(FirebasePost.class);
                     String[] info = {get.id, get.name, String.valueOf(get.age), get.gender};
-                    String Result = setTextLength(info[0],10) + setTextLength(info[1],10) + setTextLength(info[2],10) + setTextLength(info[3],10);
+                    String Result = setTextLength(info[0],15) + setTextLength(info[1],15) + setTextLength(info[2],15) + setTextLength(info[3],15);
                     arrayData.add(Result);
                     arrayIndex.add(key);
 
