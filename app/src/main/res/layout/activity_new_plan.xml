@@ -4,32 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back1"
+    android:background="@drawable/back10"
     tools:context=".NewPlanActivity">
+
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="List"
-        android:textColor="#E6B1EE"
-        android:textSize="55dp"
-        android:gravity="center"
-        android:paddingTop="80dp"
         android:fontFamily="@font/bold"
-        />
-    <ListView
-        android:padding="40dp"
-        android:id="@+id/listview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"/>
+        android:gravity="center"
+        android:paddingTop="7dp"
+        android:text="LIST"
+        android:textColor="#231C01"
+        android:drawableTop="@drawable/makcaron"
+        android:textSize="55dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title" />
 
     <Button
         android:id="@+id/a"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
         android:layout_alignParentRight="true"
-        android:background="@drawable/idea" />
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/idea"
+        android:layout_margin="20dp"
+        android:onClick="clickbtn" />
+    <Button
+        android:id="@+id/b"
+        android:layout_width="23dp"
+        android:layout_height="20dp"
+        android:backgroundTint="#050404"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:layout_margin="20dp"
+        android:onClick="clickbtnback" />
 
 
 </RelativeLayout>

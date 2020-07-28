@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:fitsSystemWindows="true"
+    android:id="@+id/layout_drawer"
+    tools:openDrawer="start"
     android:background="@drawable/back2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv"
@@ -20,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="오늘 모행"
-        android:textColor="#E6B1EE"
+        android:textColor="#FF9800"
         android:textSize="55dp"
         android:gravity="center"
         android:paddingTop="80dp"
@@ -71,7 +78,15 @@
         android:layout_marginBottom="70dp"/>
 
 
+    </RelativeLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/drawer_header"
+        app:menu="@menu/drawer_menu"/>
 
 
 
-</RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

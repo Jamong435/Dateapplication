@@ -4,23 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back1"
-    tools:context=".NewPlanActivity">
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="section"
-        android:textColor="#E6B1EE"
-        android:textSize="55dp"
-        android:gravity="center"
-        android:paddingTop="80dp"
-        android:fontFamily="@font/bold"
-        />
+    android:background="@drawable/back12"
+    tools:context=".FinishActivity">
+
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_margin="15dp"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <Button
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="30dp"
+        android:background="@drawable/bg_button_round"
+        android:backgroundTint="#FF9800"
+        android:fontFamily="@font/bold"
+        android:textSize="20dp"
+        android:layout_width="120dp"
+        android:text="메인화면"
         android:layout_height="wrap_content"
-        android:id="@+id/recycler"/>
+        android:onClick="clickbtn5"/>
+
 
 </RelativeLayout>

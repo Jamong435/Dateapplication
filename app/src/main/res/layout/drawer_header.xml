@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@drawable/back4">
+
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bold"
+        android:textSize="27dp"
+        android:text="'웃어 주세요 스마일^^\n 맞아요 그렇게요'"
+        android:textColor="#000000"
+        android:layout_margin="15dp"/>
+
+</RelativeLayout>

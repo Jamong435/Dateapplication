@@ -86,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
                             if (success) { // 회원등록에 성공한 경우
-                                Toast.makeText(getApplicationContext(),"회원 등록에 성공하였습니다.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"감사합니다.\n회원등록성공하였습니다",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this, GoogleLogin.class);
                                 startActivity(intent);
                             } else { // 회원등록에 실패한 경우

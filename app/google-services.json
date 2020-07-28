@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "596201107373",
+    "firebase_url": "https://dateapplication-843e1.firebaseio.com",
+    "project_id": "dateapplication-843e1",
+    "storage_bucket": "dateapplication-843e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596201107373:android:8a25c95fc500b61ec07b24",
+        "android_client_info": {
+          "package_name": "com.kim9212.dateapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596201107373-648db3vo39a50673cq0mm2h97p389qh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyAJw1Vca0hFGfqa_t15PW9CKAoF7K5ok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596201107373-648db3vo39a50673cq0mm2h97p389qh6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

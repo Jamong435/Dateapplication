@@ -1,5 +1,7 @@
 package com.kim9212.dateapplication;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -8,6 +10,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +23,19 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
@@ -41,22 +57,20 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.kakao.util.helper.Utility.getPackageInfo;
 
-public class GoogleLogin extends AppCompatActivity {
+public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     //    TextView tvName;
-//    TextView tvEmail;
+    //    TextView tvEmail;
     CircleImageView iv;
+
+    private SignInButton btn_google; // 구글 로그인 버튼
+    private FirebaseAuth auth; // 파이어 베이스 인증 객체
+    private GoogleApiClient googleApiClient; // 구글 API 클라이언트 객체
+    private static final int REQ_SIGN_GOOGLE = 100; // 구글 로그인 결과 코드
 
 
     private EditText et_id, et_pass;
     private Button btn_login1, btn_register;
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +79,44 @@ public class GoogleLogin extends AppCompatActivity {
 //        tvName= findViewById(R.id.tv_name);
 //        tvEmail= findViewById(R.id.tv_email);
         iv = findViewById(R.id.iv);
-
         et_id = findViewById(R.id.et_id);
         et_pass = findViewById(R.id.et_pass);
         btn_login1 = findViewById(R.id.btn_login1);
         btn_register = findViewById(R.id.btn_register);
+
+        String strChange = "<font color=\"#F2994A\">L</font>";
+        String strBack = "OGIN";
+        TextView title = (TextView)findViewById(R.id.title);
+        title.setText(Html.fromHtml(strChange+strBack));
+
+
+
+
+
+
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
+                .build();
+        auth = FirebaseAuth.getInstance(); // 파이어베이스 인증 객체 초기화.
+
+        btn_google = findViewById(R.id.btn_google);
+        btn_google.setOnClickListener(new View.OnClickListener() { // 구글 로그인 버튼을 클릭했을 때 이곳을 수행.
+            @Override
+            public void onClick(View view) {
+                Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                startActivityForResult(intent, REQ_SIGN_GOOGLE);
+            }
+        });
+
+
+
+
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,14 +167,8 @@ public class GoogleLogin extends AppCompatActivity {
             }
         });
 
-
-        //keyhas받는 구문
-        String keyHash = getKeyHash(this);
-        Log.i("TAG", keyHash);
-
         Session.getCurrentSession().addCallback(sessionCallback);
     }
-
     //카카오 로그인 서버와 연결을 시도하는 세션작업의 결과를 듣는 리스너
     ISessionCallback sessionCallback = new ISessionCallback() {
         @Override
@@ -160,9 +201,10 @@ public class GoogleLogin extends AppCompatActivity {
                 if (userAccount == null)
 
                     return;
-//                //1. 이메일 정보 , 닉네임( 보여지지는 않으나 가지고 있음)
+                //1. 이메일 정보 , 닉네임( 보여지지는 않으나 가지고 있음)
                 //tvEmail.setText( userAccount.getEmail() );
                 //tvName.setText(nickName);
+
 
                 //2. 기본 프로필 정보(닉네임, 이미지, 섬네일 이미지)
                 Profile profile = userAccount.getProfile();
@@ -171,17 +213,12 @@ public class GoogleLogin extends AppCompatActivity {
 
                 String nickName = profile.getNickname();
                 String imgUrl = profile.getProfileImageUrl();
-
-
                 //G에 저장하는 과정
                 G.nickName = nickName;
                 G.imgUrl = imgUrl;
-
                 //sharedpreference로 내부저장소에 닉네임과 사진저장
                 getSharedPreferences("name", MODE_PRIVATE).edit().putString("name", G.nickName).commit();
                 getSharedPreferences("name", MODE_PRIVATE).edit().putString("picture", G.imgUrl).commit();
-
-
                 Intent intent = new Intent(GoogleLogin.this, MainActivity.class);
                 startActivity(intent);
 
@@ -201,41 +238,93 @@ public class GoogleLogin extends AppCompatActivity {
         Session.getCurrentSession().removeCallback(sessionCallback);
     }
 
-    //카카오 키해시 리턴하는 메소드
-    public static String getKeyHash(final Context context) {
-        PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
-        if (packageInfo == null)
-            return null;
 
-        for (Signature signature : packageInfo.signatures) {
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                return Base64.encodeToString(md.digest(), Base64.NO_WRAP);
-            } catch (NoSuchAlgorithmException e) {
-                Log.w("TAG", "Unable to get MessageDigest. signature=" + signature, e);
+            //keyhas받는 구문
+
+//    String keyHash= getKeyHash(this);
+//    //        Log.i("TAG", keyHash);
+//    //카카오 키해시 리턴하는 메소드
+//    public static String getKeyHash(final Context context) {
+//        PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
+//        if (packageInfo == null)
+//            return null;
+//
+//        for (Signature signature : packageInfo.signatures) {
+//            try {
+//                MessageDigest md = MessageDigest.getInstance("SHA");
+//                md.update(signature.toByteArray());
+//                return Base64.encodeToString(md.digest(), Base64.NO_WRAP);
+//            } catch (NoSuchAlgorithmException e) {
+//                Log.w("TAG", "Unable to get MessageDigest. signature=" + signature, e);
+//            }
+//
+//        }
+//        return null;
+//    }
+
+//    public void clickLogout(View view) {
+//
+//        UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+//
+//            @Override
+//            public void onCompleteLogout() {
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Toast.makeText(GoogleLogin.this, "로그아웃 완료", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//
+//
+//                Session.getCurrentSession().removeCallback(sessionCallback);
+//            }
+//        });
+//
+//    }
+
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { // 구글 로그인 인증을 요청 했을 때 결과 값을 되돌려 받는 곳.
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == REQ_SIGN_GOOGLE) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if(result.isSuccess()) { // 인증결과가 성공적이면..
+                GoogleSignInAccount account = result.getSignInAccount(); // account 라는 데이터는 구글로그인 정보를 담고있습니다. (닉네임,프로필사진Url,이메일주소...등)
+                resultLogin(account); // 로그인 결과 값 출력 수행하라는 메소드
             }
         }
-        return null;
+
     }
 
-    public void clickLogout(View view) {
-
-        UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
-
-            @Override
-            public void onCompleteLogout() {
-                runOnUiThread(new Runnable() {
+    private void resultLogin(final GoogleSignInAccount account) { //구글관련
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void run() {
-                        Toast.makeText(GoogleLogin.this, "로그아웃 완료", Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) { // 로그인이 성공했으면...
+                            Toast.makeText(GoogleLogin.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.putExtra("nickName",account.getDisplayName());
+                            intent.putExtra("photoUrl",String.valueOf(account.getPhotoUrl())); // String.valueOf() 특정 자료형을 String 형태로 변환.
+                            startActivity(intent);
+                        } else { // 로그인이 실패했으면..
+                            Toast.makeText(GoogleLogin.this, "로그인 실패", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
+    }
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
-                Session.getCurrentSession().removeCallback(sessionCallback);
-            }
-        });
+    }
 
+    public void clicktextview(View view) {
+        Intent intent= new Intent(this,RegisterActivity.class);
+        startActivity(intent);
     }
 }

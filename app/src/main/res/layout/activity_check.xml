@@ -4,18 +4,205 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back1"
-    tools:context=".NewPlanActivity">
+    android:background="@drawable/back11"
+    tools:context=".CheckActivity">
+
     <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:id="@+id/text_id"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date Application"
-        android:textColor="#E6B1EE"
-        android:textSize="55dp"
-        android:gravity="center"
-        android:paddingTop="80dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/bold"
-        />
+        android:paddingTop="80dp"
+        android:text="약속장소: "
+        android:textColor="#474545"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/edit_id"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_toRightOf="@+id/text_id"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="10"
+        android:textColor="#F44336" />
+
+    <TextView
+        android:id="@+id/text_name"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_id"
+        android:layout_alignRight="@+id/text_id"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bold"
+        android:text="설명: "
+        android:textColor="#474545"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/text_name"
+        android:layout_alignEnd="@+id/edit_id"
+        android:layout_alignBottom="@+id/text_name"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="-11dp"
+        android:layout_toEndOf="@+id/text_name"
+        android:ems="50"
+        android:inputType="textPersonName"
+        android:maxLength="50"
+        android:textColor="#FA8201" />
+
+    <TextView
+        android:id="@+id/text_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_name"
+        android:layout_alignRight="@+id/text_name"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bold"
+        android:text="약속시간: "
+        android:textColor="#474545"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/edit_age"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/text_age"
+        android:layout_alignEnd="@+id/check_woman"
+        android:layout_alignBottom="@+id/text_age"
+        android:layout_marginEnd="-14dp"
+        android:layout_marginBottom="-11dp"
+        android:layout_toEndOf="@+id/text_age"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="10" />
+
+    <TextView
+        android:id="@+id/text_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_age"
+        android:layout_alignLeft="@+id/text_age"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bold"
+        android:text="Alarm? "
+        android:textColor="#474545"
+        android:textSize="25dp" />
+
+    <CheckBox
+        android:id="@+id/check_man"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/text_gender"
+        android:layout_alignBottom="@+id/text_gender"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/text_gender"
+        android:fontFamily="@font/bold"
+        android:text="Thanks"
+        android:textColor="#474545"
+        android:textSize="20dp" />
+
+    <CheckBox
+        android:id="@+id/check_woman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/text_gender"
+        android:layout_alignBottom="@+id/text_gender"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/check_man"
+        android:fontFamily="@font/bold"
+        android:text="Nop."
+        android:textColor="#474545"
+        android:textSize="20dp" />
+
+
+    <Button
+        android:id="@+id/btn_insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/check_man"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#FF5722"
+        android:fontFamily="@font/bold"
+        android:text="Plan Save"
+        android:textSize="17dp" />
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/check_man"
+        android:layout_toRightOf="@id/btn_insert"
+        android:background="#FF9800"
+        android:fontFamily="@font/bold"
+        android:text="Edit" />
+
+    <ScrollView
+
+        android:id="@+id/scroll_view"
+        android:layout_width="400dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="350dp"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <ListView
+
+            android:id="@+id/db_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#00000000"
+            android:dividerHeight="3dp">
+
+        </ListView>
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        android:background="@drawable/bg_button_round"
+        android:backgroundTint="#FFEB3B"
+        android:fontFamily="@font/bold"
+        android:onClick="clickable2"
+        android:text="전체화면" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        android:background="@drawable/bg_button_round"
+        android:backgroundTint="#FFEB3B"
+        android:fontFamily="@font/bold"
+        android:onClick="clickable"
+        android:text="초기화면" />
+
+    <Button
+        android:id="@+id/b"
+        android:layout_width="23dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="20dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:backgroundTint="#050404"
+        android:onClick="clickbtnback1" />
 
 </RelativeLayout>
