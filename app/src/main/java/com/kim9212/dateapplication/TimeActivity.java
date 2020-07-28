@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TimePicker;
@@ -14,7 +15,7 @@ public class TimeActivity extends AppCompatActivity {
 
     public TimePicker timePicker;
 
-    int Pick_hour, pick_min;
+    int Pick_hour, Pick_min;
     Button click6;
 
 
@@ -35,6 +36,17 @@ public class TimeActivity extends AppCompatActivity {
         @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public void onClick(View v) {
+
+            Pick_hour= timePicker.getHour();
+            Pick_min= timePicker.getMinute();
+
+
+            Intent intent = new Intent(TimeActivity.this, CheckActivity.class);
+            intent.putExtra("time",Pick_hour+Pick_min);
+
+            Log.i("Tag", String.valueOf(Pick_hour+Pick_min));
+            startActivity(intent);
+
             String ampm;
             switch (v.getId())
             {
@@ -49,13 +61,7 @@ public class TimeActivity extends AppCompatActivity {
         }
 
 
+
     };
 
-
-    public void clickbtn6(View view) {
-        Intent intent = new Intent(this, CheckActivity.class);
-
-        startActivity(intent);
-
-    }
 }

@@ -60,6 +60,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
     static ArrayList<String> arrayIndex =  new ArrayList<String>();
     static ArrayList<String> arrayData = new ArrayList<String>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +80,16 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
         check_Man.setOnClickListener(this);
         check_Woman = (CheckBox) findViewById(R.id.check_woman);
         check_Woman.setOnClickListener(this);
+
+
+
+        Intent intent= getIntent();
+        int time=intent.getExtras().getInt("time");
+        String a=Integer.toString(time);
+        edit_Age.setText(a);
+
+
+
 
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
         ListView listView = (ListView) findViewById(R.id.db_list_view);
