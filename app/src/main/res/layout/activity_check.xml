@@ -11,7 +11,7 @@
         android:id="@+id/text_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/bold"
         android:paddingTop="80dp"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_id"
-        android:layout_alignLeft="@+id/text_id"
+        android:layout_alignRight="@+id/text_id"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
         android:text="설명: "
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_name"
-        android:layout_alignLeft="@+id/text_name"
+        android:layout_alignRight="@+id/text_name"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
         android:text="약속시간: "
@@ -123,26 +123,27 @@
         android:textSize="20dp" />
 
 
-
-
     <Button
         android:id="@+id/btn_insert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/edit_age"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="12dp"
+        android:layout_below="@id/check_man"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
         android:background="#FF5722"
         android:fontFamily="@font/bold"
-        android:textSize="17dp"
-        android:text="Plan Save" />
+        android:text="Plan Save"
+        android:textSize="17dp" />
 
     <Button
         android:id="@+id/btn_update"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btn_insert"
-        android:layout_alignBottom="@+id/check_woman"
+        android:layout_below="@id/check_man"
+        android:layout_toRightOf="@id/btn_insert"
         android:background="#FF9800"
         android:fontFamily="@font/bold"
         android:text="Edit" />
@@ -155,8 +156,7 @@
         android:layout_marginTop="350dp"
         android:fillViewport="true"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"
-        >
+        tools:layout_editor_absoluteY="8dp">
 
         <ListView
 
@@ -164,8 +164,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="#00000000"
-            android:dividerHeight="3dp"
-            >
+            android:dividerHeight="3dp">
 
         </ListView>
 
@@ -199,11 +198,11 @@
         android:id="@+id/b"
         android:layout_width="23dp"
         android:layout_height="20dp"
-        android:backgroundTint="#050404"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/ic_baseline_arrow_back_24"
         android:layout_margin="20dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:backgroundTint="#050404"
         android:onClick="clickbtnback1" />
 
 </RelativeLayout>
