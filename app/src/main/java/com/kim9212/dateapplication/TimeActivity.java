@@ -42,7 +42,8 @@ public class TimeActivity extends AppCompatActivity {
 
 
             Intent intent = new Intent(TimeActivity.this, CheckActivity.class);
-            intent.putExtra("time",Pick_hour+Pick_min);
+            intent.putExtra("hour",Pick_hour);
+            intent.putExtra("min",Pick_min);
 
             Log.i("Tag", String.valueOf(Pick_hour+Pick_min));
             startActivity(intent);

@@ -84,8 +84,9 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
 
 
         Intent intent= getIntent();
-        int time=intent.getExtras().getInt("time");
-        String a=Integer.toString(time);
+        int hour=intent.getExtras().getInt("hour");
+        int min=intent.getExtras().getInt("min");
+        String a=String.valueOf(hour+min);
         edit_Age.setText(a);
 
 
@@ -310,7 +311,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void clickbtnback1(View view) {
-        Intent intent= new Intent(this,MapActivity.class);
+        Intent intent= new Intent(this,TimeActivity.class);
         startActivity(intent);
     }
 }
