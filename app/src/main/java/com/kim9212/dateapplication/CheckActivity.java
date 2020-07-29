@@ -25,7 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -183,7 +185,12 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
             FirebasePost post = new FirebasePost(ID, name, age, gender);
             postValues = post.toMap();
         }
-        childUpdates.put("/id_list/" + ID, postValues);
+
+        Date date= new Date();
+        date.setTime(date.getTime());
+        String day= new SimpleDateFormat("yyyyMMddHHmmss").format(date);
+
+        childUpdates.put("/id_list/" +day+"_"+ ID, postValues);
         Intent intent = getIntent();
         intent.putExtra("Name", ID);
         intent.putExtra("Nick", name);
@@ -206,13 +213,10 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
                     String Result = setTextLength(info[0], 15) + setTextLength(info[1], 30) + setTextLength(info[2], 15) + setTextLength(info[3], 15);
                     arrayData.add(Result);
                     arrayIndex.add(key);
-
-
                 }
                 arrayAdapter.clear();
                 arrayAdapter.addAll(arrayData);
                 arrayAdapter.notifyDataSetChanged();
-
 
             }
 
@@ -241,9 +245,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btn_insert:
 
 
-                for(int i=0;i<10;i++) {
-                    ID = i+edit_ID.getText().toString();
-                }
+                ID = edit_ID.getText().toString();
                 name = edit_Name.getText().toString();
                 age = Long.parseLong(edit_Age.getText().toString());
                 if (!IsExistID()) {
@@ -318,4 +320,6 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = new Intent(this, TimeActivity.class);
         startActivity(intent);
     }
+
+
 }
