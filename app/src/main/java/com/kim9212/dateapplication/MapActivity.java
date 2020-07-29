@@ -213,7 +213,12 @@ public class MapActivity extends AppCompatActivity {
 
     public void clickbtn4(View view) {
         Intent intent= new Intent(this,TimeActivity.class);
-        startActivity(intent);
 
+        String s = et1.getText().toString();
+        intent.putExtra("place",s);
+
+        startActivity(intent);
     }
+
+
 }

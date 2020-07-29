@@ -41,12 +41,17 @@ public class TimeActivity extends AppCompatActivity {
             Pick_min= timePicker.getMinute();
 
 
-            Intent intent = new Intent(TimeActivity.this, CheckActivity.class);
+           // Intent intent = new Intent(TimeActivity.this, CheckActivity.class);
+
+            Intent intent = getIntent();
+            intent.setClass(TimeActivity.this, CheckActivity.class);
             intent.putExtra("hour",Pick_hour);
             intent.putExtra("min",Pick_min);
+            startActivity(intent);
+
 
             Log.i("Tag", String.valueOf(Pick_hour+Pick_min));
-            startActivity(intent);
+
 
             String ampm;
             switch (v.getId())

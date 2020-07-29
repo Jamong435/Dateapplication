@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CheckActivity extends AppCompatActivity implements View.OnClickListener{
+public class CheckActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DatabaseReference mPostReference;
 
@@ -53,11 +53,10 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
     String gender = "";
     String sort = "id";
 
-    String a,b;
 
     ArrayAdapter<String> arrayAdapter;
 
-    static ArrayList<String> arrayIndex =  new ArrayList<String>();
+    static ArrayList<String> arrayIndex = new ArrayList<String>();
     static ArrayList<String> arrayData = new ArrayList<String>();
 
 
@@ -75,20 +74,22 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
         text_ID = (TextView) findViewById(R.id.text_id);
         text_Name = (TextView) findViewById(R.id.text_name);
         text_Age = (TextView) findViewById(R.id.text_age);
-        text_Gender= (TextView) findViewById(R.id.text_gender);
+        text_Gender = (TextView) findViewById(R.id.text_gender);
         check_Man = (CheckBox) findViewById(R.id.check_man);
         check_Man.setOnClickListener(this);
         check_Woman = (CheckBox) findViewById(R.id.check_woman);
         check_Woman.setOnClickListener(this);
 
 
+        Intent intent = getIntent();
+        int hour = intent.getExtras().getInt("hour");
+        int min = intent.getExtras().getInt("min");
+        String going= intent.getExtras().getString("place");
 
-        Intent intent= getIntent();
-        int hour=intent.getExtras().getInt("hour");
-        int min=intent.getExtras().getInt("min");
-        String a=String.valueOf(hour+min);
+
+        String a = String.valueOf(hour + min);
         edit_Age.setText(a);
-
+        edit_ID.setText(going);
 
 
 
@@ -103,7 +104,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
         btn_Update.setEnabled(false);
     }
 
-    public void setInsertMode(){
+    public void setInsertMode() {
         edit_ID.setText("");
         edit_Name.setText("");
         edit_Age.setText("");
@@ -122,10 +123,10 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
             edit_ID.setText(tempData[0].trim());
             edit_Name.setText(tempData[1].trim());
             edit_Age.setText(tempData[2].trim());
-            if(tempData[3].trim().equals("Man")){
+            if (tempData[3].trim().equals("Man")) {
                 check_Man.setChecked(true);
                 gender = "Man";
-            }else{
+            } else {
                 check_Woman.setChecked(true);
                 gender = "Woman";
             }
@@ -169,42 +170,42 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
         }
     };
 
-    public boolean IsExistID(){
+    public boolean IsExistID() {
         boolean IsExist = arrayIndex.contains(ID);
         return IsExist;
     }
 
-    public void postFirebaseDatabase(boolean add){
+    public void postFirebaseDatabase(boolean add) {
         mPostReference = FirebaseDatabase.getInstance().getReference();
         Map<String, Object> childUpdates = new HashMap<>();
         Map<String, Object> postValues = null;
-        if(add){
+        if (add) {
             FirebasePost post = new FirebasePost(ID, name, age, gender);
             postValues = post.toMap();
         }
         childUpdates.put("/id_list/" + ID, postValues);
-        Intent intent= getIntent();
+        Intent intent = getIntent();
         intent.putExtra("Name", ID);
         intent.putExtra("Nick", name);
+
         setResult(RESULT_OK, intent);
         mPostReference.updateChildren(childUpdates);
     }
 
-    public void getFirebaseDatabase(){
+    public void getFirebaseDatabase() {
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.e("getFirebaseDatabase", "key: " + dataSnapshot.getChildrenCount());
                 arrayData.clear();
                 arrayIndex.clear();
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     String key = postSnapshot.getKey();
                     FirebasePost get = postSnapshot.getValue(FirebasePost.class);
                     String[] info = {get.id, get.name, String.valueOf(get.age), get.gender};
-                    String Result = setTextLength(info[0],15) + setTextLength(info[1],30) + setTextLength(info[2],15) + setTextLength(info[3],15);
+                    String Result = setTextLength(info[0], 15) + setTextLength(info[1], 30) + setTextLength(info[2], 15) + setTextLength(info[3], 15);
                     arrayData.add(Result);
                     arrayIndex.add(key);
-
 
 
                 }
@@ -224,10 +225,10 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
         sortbyAge.addListenerForSingleValueEvent(postListener);
     }
 
-    public String setTextLength(String text, int length){
-        if(text.length()<length){
+    public String setTextLength(String text, int length) {
+        if (text.length() < length) {
             int gap = length - text.length();
-            for (int i=0; i<gap; i++){
+            for (int i = 0; i < gap; i++) {
                 text = text + " ";
             }
         }
@@ -238,14 +239,18 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_insert:
-                ID = edit_ID.getText().toString();
+
+
+                for(int i=0;i<10;i++) {
+                    ID = i+edit_ID.getText().toString();
+                }
                 name = edit_Name.getText().toString();
                 age = Long.parseLong(edit_Age.getText().toString());
-                if(!IsExistID()){
+                if (!IsExistID()) {
                     postFirebaseDatabase(true);
                     getFirebaseDatabase();
                     setInsertMode();
-                }else{
+                } else {
                     Toast.makeText(CheckActivity.this, "이미 존재하는 지역 입니다.", Toast.LENGTH_LONG).show();
                 }
                 edit_ID.requestFocus();
@@ -263,7 +268,6 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
                 edit_ID.requestFocus();
                 edit_ID.setCursorVisible(true);
                 break;
-
 
 
             case R.id.check_man:
@@ -300,18 +304,18 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void clickable(View view) {
-        Intent intent= new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }
 
     public void clickable2(View view) {
-        Intent intent= new Intent(this,FinishActivity.class);
+        Intent intent = new Intent(this, FinishActivity.class);
         startActivity(intent);
     }
 
     public void clickbtnback1(View view) {
-        Intent intent= new Intent(this,TimeActivity.class);
+        Intent intent = new Intent(this, TimeActivity.class);
         startActivity(intent);
     }
 }
