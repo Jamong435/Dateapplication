@@ -1,4 +1,4 @@
-# 처음만든 application입니다.
+# 데이트앱
 ## 주요기능
 
 >json을 pharshing 하여서 최신영화순위를 recyclerview로 나열하였습니다.
