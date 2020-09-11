@@ -19,7 +19,7 @@
         android:textSize="60dp" />
 
     <TimePicker
-        android:id="@+id/time_picker"
+        android:id="@+id/timePicker"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_below="@+id/timetitle"
@@ -35,7 +35,7 @@
         android:text="TimePick!"
         android:fontFamily="@font/bold"
         android:textSize="20dp"
-        android:id="@+id/clcick6"
+        android:id="@+id/button"
 
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
