@@ -19,6 +19,7 @@ import java.util.Objects;
 import static android.content.Context.MODE_PRIVATE;
 
 public class DeviceBootReceiver extends BroadcastReceiver {
+    //부팅후에도 받을수있게.
     @Override
     public void onReceive(Context context, Intent intent) {
         if (Objects.equals(intent.getAction(), "android.intent.action.BOOT_COMPLETED")) {

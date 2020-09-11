@@ -22,7 +22,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 
 public class AlarmReceiver extends BroadcastReceiver {
-    private Vibrator vibrator;
+    //알림설정
     @Override
     public void onReceive(Context context, Intent intent) {
 
