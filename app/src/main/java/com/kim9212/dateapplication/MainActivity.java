@@ -36,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
             title.setText(userID+"님오늘은뭐해요?");
         }
 
-
-
 //        //구글로 로그인했을시 //TO DO: "구글에서도 로그인했을떄도 ID값을 가져와서 쓰고싶으나 계속 NULL값을 받아옴. 허나 로그인은됨.
 
 
@@ -78,20 +72,6 @@ public class MainActivity extends AppCompatActivity {
 //        if(nick==null){
 //            title.setText("출발해볼까요?");
 //        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     public void startnewplan(View view) {
