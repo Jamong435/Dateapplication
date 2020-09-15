@@ -122,7 +122,9 @@ public class TimeActivity extends AppCompatActivity {
 
 
                 diaryNotification(calendar);
-                Intent intent =new Intent(TimeActivity.this,CheckActivity.class);
+
+                Intent intent = getIntent();
+                intent.setClass(TimeActivity.this, CheckActivity.class);
                 intent.putExtra("hour",Calendar.HOUR_OF_DAY);
                 intent.putExtra("min",Calendar.MINUTE);
                 startActivity(intent);
