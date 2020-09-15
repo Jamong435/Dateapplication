@@ -89,7 +89,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
         String going= intent.getExtras().getString("place");
 
 
-        String a = String.valueOf(hour + min);
+        String a = String.valueOf(hour+"" +":"+ min+"");
         edit_Age.setText(a);
         edit_ID.setText(going);
 
@@ -186,6 +186,7 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
             postValues = post.toMap();
         }
 
+        //저장할떄 순번을 주기위하여.
         Date date= new Date();
         date.setTime(date.getTime());
         String day= new SimpleDateFormat("yyyyMMddHHmmss").format(date);
@@ -209,8 +210,13 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     String key = postSnapshot.getKey();
                     FirebasePost get = postSnapshot.getValue(FirebasePost.class);
+//                    String str= get.id;
+//                    String result=str.substring(14,str.length()-1);
                     String[] info = {get.id, get.name, String.valueOf(get.age), get.gender};
+
                     String Result = setTextLength(info[0], 15) + setTextLength(info[1], 30) + setTextLength(info[2], 15) + setTextLength(info[3], 15);
+
+
                     arrayData.add(Result);
                     arrayIndex.add(key);
                 }
@@ -247,7 +253,10 @@ public class CheckActivity extends AppCompatActivity implements View.OnClickList
 
                 ID = edit_ID.getText().toString();
                 name = edit_Name.getText().toString();
-                age = Long.parseLong(edit_Age.getText().toString());
+
+
+                //int값으로 안들어가니까 replace로 :만 때어내자
+                age = Long.parseLong(edit_Age.getText().toString().replace(":",""));
                 if (!IsExistID()) {
                     postFirebaseDatabase(true);
                     getFirebaseDatabase();

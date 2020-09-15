@@ -32,6 +32,10 @@ public class TimeActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
     public View.OnClickListener listener = new View.OnClickListener() {
         @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
@@ -39,6 +43,10 @@ public class TimeActivity extends AppCompatActivity {
 
             Pick_hour= timePicker.getHour();
             Pick_min= timePicker.getMinute();
+            if(Pick_min==1){
+
+            }
+
 
 
            // Intent intent = new Intent(TimeActivity.this, CheckActivity.class);
@@ -62,7 +70,12 @@ public class TimeActivity extends AppCompatActivity {
                         ampm="오후";
                     }
                     else ampm= "오전";
+                    if(timePicker.getMinute()>10 &&timePicker.getMinute()<0){
+
+                    }
+
                 }
+
             }
         }
 
